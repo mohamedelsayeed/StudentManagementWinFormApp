@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace ItiApp
 {
-    public partial class Form1 : Form
+    public partial class Students : Form
     {
-        public Form1()
+        public Students()
         {
             InitializeComponent();
+            DataTable studentsdataTable = StudentRepo.getAll();
+            DVGStudent.DataSource = studentsdataTable;
         }
+
+
     }
 }
