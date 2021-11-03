@@ -25,13 +25,22 @@ namespace ItiApp
 
         public static int dml(string query)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["iticon"].ConnectionString);
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            int roweffect = cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["iticon"].ConnectionString);
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                int roweffect = cmd.ExecuteNonQuery();
+                con.Close();
 
-            return roweffect;
+                return roweffect;
+            }
+            catch (Exception ex)
+            {
+
+                return 0;
+                
+            }
         }
     }
 }

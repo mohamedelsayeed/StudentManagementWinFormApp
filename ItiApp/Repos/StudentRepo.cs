@@ -18,6 +18,25 @@ namespace ItiApp
                             "    from Student std, Department dep , Instructor ins " +
                             " where std.Dept_Id = dep.Dept_Id and std.St_super = ins.Ins_Id");
         }
+
+
+        public static int update(int id, string fname, string lname, string address, int age, int depid, int superId)
+        {
+            return DBLayer.dml($"update Student set St_Fname = '{fname}' , St_Lname = '{lname}' " +
+                        $", St_Address = '{address}' , St_Age = {age}, Dept_Id = {depid}, St_super = {superId} where St_Id = {id} ");
+
+        }
+
+        public static int delete(int id)
+        {
+            return DBLayer.dml($"delete from Student where St_Id = {id}");
+        }
+
+        public static int add(string fname, string lname, string address, int age, int depid, int superId)
+        {
+            return DBLayer.dml($"insert into Student values ('{fname}' , '{lname}', '{address}' , {age} , {depid} , {superId})");
+        }
+
     }
 
     //  St_Id
